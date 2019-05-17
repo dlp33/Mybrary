@@ -1,0 +1,64 @@
+==== 
+Promises
+https://www.youtube.com/watch?v=DHvZLI7Db8E
+====
+Promise ==> two results === (resolve, reject)
+let p = new Promise((resolve, reject) => {
+
+});
+
+note: 
+- anything inside of a .then runs for a resolve
+- .catch === our reject states.
+Steps:
+1. Create a promise
+2. Tell it what we want it to do when it succeeds.
+3. Tell it what we want it to do when it fails. 
+Then ==>
+1. Do this WHEN it succeeds.
+2. Do this WHEN it fails. 
+
+NOTE:
+- They work great when you need to do something that is going to take a long time in the background ie. downloading an image ... and you want to do something after it's completed ==> instead of making everything else wait for it. 
+
+====
+Async Await
+https://www.youtube.com/watch?v=V_Kr9OSfDeU
+====
+==> Syntactical sugar wrapped around making promises easier to work with.
+
+Note:
+- Asyn/Await requires some function that the awaiting code is inside of. 
+- The code must be wrapped in a function with the async keyword.
+- Must use the 'await' keyword for all asyncronous code. Otherwise it will just return the Promise and NOT the result of the promise. 
+
+async function doWork() {
+  // await says the code should wait until the function makeRequest is finished, then afterwards it will execute the next thing. 
+  // makeRequest() will return the RESOLVE section of the Promise.
+try {
+  const response = await makeRequest('Google');
+  console.log('Response Received');
+  const processedResponse = await processRequest(response);
+  console.log(processedResponse);
+  } catch (err) {
+    console.log(err);
+  }
+}
+doWork()
+
+==> Handling errors with async/await === try and .catch
+- Inside of the try brackets ... add in all of the code that could potentially fail. 
+
+====================================================
+Full Stack Web Development Course
+https://www.youtube.com/watch?v=qj2oDkvc4dQ&list=PLZlA0Gpn_vH8jbFkBjOuFjhxANC63OmXM&index=6&t=0s
+====================================================
+Video 1:
+npm init -y
+- y uses default values. 
+
+npm i --save--dev nodemon
+==> saves nodemon as a development dependency.
+
+.env library
+==> Allows us to load environment variables into our application.
