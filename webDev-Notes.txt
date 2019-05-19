@@ -59,6 +59,31 @@ npm init -y
 
 npm i --save--dev nodemon
 ==> saves nodemon as a development dependency.
+==> Use if we only want to use locally. 
 
-.env library
+dotenv library
 ==> Allows us to load environment variables into our application.
+
+Partials
+- All template files that aren't actually related to routes.
+
+Forms
+==> Action === the URL that the form goes to.
+
+Anchor tags
+<a></a> ==> used to link things whereas Buttons are used to interact with forms or other objects. 
+
+NOTE:
+Min 12:30 video 2...
+==> FORM INPUTS ==> creates a partial file, because form inputs are shared between the new file and edit file. Don't duplicate. 
+
+Note: Video #2 - 25:35
+eg: Author.find({})
+==> pass in an empty object the find function to tell the db that we have no conditions.
+
+Video 2 - 29:31
+req.query instead of req.body 
+==> BECAUSE a .GET request sends through the query string: ?name=Darren
+
+new RegExp(req.query.name, 'i')
+==> The 'i' flag means case-insensitive. 
