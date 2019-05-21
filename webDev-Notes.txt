@@ -87,3 +87,46 @@ req.query instead of req.body
 
 new RegExp(req.query.name, 'i')
 ==> The 'i' flag means case-insensitive. 
+
+Note: Video 3 4:10 ==> When possible store files in the file system, on the server, rather than in the DB.
+
+// Created inside the Book model. 
+==> References the Author object's ID.
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Author'
+  }
+
+Vid #3 ==> 8:55 ... discussion on what code to include in views and what to include in server.js. 
+==> *** Don't search the DB from inside the Views... instead do that in the Routes and pass the variable to the Views. 
+
+Vid #3 ==> 20:15 ==> Multer
+- Allows us to work with multi-part forms === fileForm. 
+<h2>New Book</h2>
+<form action="/books" method="POST" enctype = "multipart/form-data">
+
+coverImageBasePath
+- created inside the Book model
+- The path to where all the cover images are stored. 
+
+const uploadPath = path.join('public', Book.coverImageBasePath);
+==> Combines together two different paths. 
+==> Combines publick folder and Book.coverImageBasePath (which is defined in the book model as: const coverImageBasePath = 'uploads/bookCovers';)
+- Joining === public/uploads/bookCovers
+
+
+#3 40:20
+let query = Book.find();
+==> returns a query object which we can build a query from and then execute later
+  query.exec()
+43:30
+lte = less than or equal to.
+query = query.lte('publishDate', req.query.publishedBefore);
+==> if the 'publishDate' (db value) is <= publishedBefore date ==> then return that object. 
+
+
+====
+npm run devstart
+====
+
