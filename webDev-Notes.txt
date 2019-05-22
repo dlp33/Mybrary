@@ -126,6 +126,91 @@ query = query.lte('publishDate', req.query.publishedBefore);
 ==> if the 'publishDate' (db value) is <= publishedBefore date ==> then return that object. 
 
 
+
+============
+VIDEO #4
+============
+FilePond
+- Uploading files easier
+- Nice looking file upload
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===============================================
+===============================================
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
+
+
+Searching
+- If you specifiy a call back the query will execute immediately. 
+
+Mongoose callbacks pattern:
+  callback(error, result)
+==> IF the query is successful the error param will be null. 
+
+* If you don't have a callback ==> then you're returned a variable of Type QUERY. 
+==> You can use this QUERY to build up your query and then execute it (with a callback) using the exec() method. 
+
+eg.
+// find all athletes that play tennis
+  var query = Athlete.find({ 'sport': 'Tennis' });
+
+// selecting the 'name' and 'age' fields
+  query.select('name age');
+
+// limit our results to 5 items
+  query.limit(5);
+
+// sort by age
+  query.sort({ age: -1 });
+
+// execute the query at a later time
+  query.exec(function (err, athletes) {
+    if (err) return handleError(err);
+    // athletes contains an ordered list of 5 athletes who play Tennis
+  })
+
+NOTE: we can chain all the parts of our query together using the dot operator (.) rather than adding them separately. 
+
+
+ObjectId
+==> create references from one document/model instance to another 
+- The field stores the _ID of the related model
+populate()
+==> If you need the actual content of the associated document, you can use the populate() method in a query to replace the id with the actual data
+
+var authorSchema = Schema({
+  name    : String,
+  stories : [{ type: Schema.Types.ObjectId, ref: 'Story' }]
+});
+
+var storySchema = Schema({
+  author : { type: Schema.Types.ObjectId, ref: 'Author' },
+  title    : String
+});
+
+
+
+
+
+
+
+
+===============================================
+===============================================
+
 ====
 npm run devstart
 ====
