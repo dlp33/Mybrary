@@ -131,13 +131,34 @@ query = query.lte('publishDate', req.query.publishedBefore);
 VIDEO #4
 ============
 FilePond
+https://pqina.nl/filepond/docs/
 - Uploading files easier
 - Nice looking file upload
+Moving files from being stored on the server to in the DB ... so that heroku works. HOWEVER, this is not normally how it should be done. 
+**** In a real project files would be stored in a file system. Amazon S3 is a really popular file storage system for many companies. Many hosts provide file storage with their hosting but Heroku is not one. That is ok though because there are a ton of file hosting platforms.
+****
+
+What is a BUFFER?
+https://www.w3schools.com/nodejs/ref_buffer.asp
+- The buffers module provides a way of handling streams of binary data.
+- The Buffer object is a global object in Node.js, and it is not necessary to import it using the require keyword.
+.from()
+==> Creates a Buffer object from an object (string/array/buffer)
+    function saveCover(book, coverEncoded) {
+      if (coverEncoded == null) return;
+      const cover = JSON.parse(coverEncoded)
+      if (cover != null && imageMimeTypes.includes(cover.type)) {
+        book.coverImage = new Buffer.from(cover.data, 'base64')
+        book.coverImageType = cover.type
+      }
+    }
 
 
-
-
-
+============
+VIDEO #5
+============
+method-override
+==> take a POST form and send to our server with a PUT/DELETE request. 
 
 
 
